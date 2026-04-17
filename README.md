@@ -1,11 +1,13 @@
-# No longer maintained since v147, since Ironfox added an OLED theme upstream! The code can still be used as a reference for adding an OLED theme to other versions of Firefox, so I'll keep it in public archive. Thanks everyone for your contributions and using this project!
+# Firefox-Nightly-OLED
+The purpose of this repo is to add an OLED dark theme to Firefox Nightly.
 
-# Ironfox-OLEDDark (previously Mull-OLEDDark)
-Mull is no longer maintained, this now uses Ironfox as the base. All releases starting from 134.0.1 are Ironfox-based.
+# Credits:
+- [ArtikusHG](https://github.com/ArtikusHG)
+"Since Firefox mobile (and thus, all of its forks) don't officially support an OLED dark theme, I decided to take matter into my own hands, and made a simple script that decompiles the apk, changes two lines in the resources to change the color scheme, and rebuilds the apk. This is an attempt to automate the entire process - this action will run every 24 hours, and if it finds a new build of Mull, it will download it, patch it, and publish a release."
+&nbsp;
+- [xaver985](https://github.com/xaver985)'s [fork](https://github.com/xaver985/Ironfox-OLED), which this fork is based off
 
-Since Firefox mobile (and thus, all of its forks) don't officially support an OLED dark theme, I decided to take matter into my own hands, and made a simple script that decompiles the apk, changes two lines in the resources to change the color scheme, and rebuilds the apk. This is an attempt to automate the entire process - this action will run every 24 hours, and if it finds a new build of Mull, it will download it, patch it, and publish a release.
-
-# Why not build Ironfox from source?
+# Why not build from source?
 Building the entire browser from source just to change two lines in the xml resources is uneconomical.
 
 # How to use
