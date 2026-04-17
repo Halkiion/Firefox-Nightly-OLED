@@ -10,7 +10,7 @@ build_dir="$(
   curl -fsSL "$root" \
   | grep -oE "/pub/fenix/nightly/${year}/${month}/[^\"']+/" \
   | sed -E 's#^/pub/fenix/nightly/'"${year}/${month}"'/##' \
-  | grep -E "^${year}-${month}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-fenix-.*-android/$" \
+  | grep -E "^${year}-${month}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-fenix-${BUILD_VERSION}-android/$" \
   | sort \
   | tail -n 1
 )"
