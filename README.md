@@ -1,3 +1,6 @@
+# Legal Disclaimer
+**This project produces an unofficial, modified, re-signed build of Firefox Nightly for Android and is not affiliated with Mozilla. Do not report bugs to Mozilla.**
+
 # Firefox-Nightly-OLED
 The purpose of this repo is to add an OLED dark theme to Firefox Nightly.
 
