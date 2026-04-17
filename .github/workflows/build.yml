@@ -21,27 +21,20 @@ jobs:
             sudo apt update
             sudo apt install -y jq
 
-      - name: Get latest Firefox Nightly build tag
+      - name: Get latest Firefox Nightly version (product-details JSON)
         run: |
           set -euo pipefail
-          YEAR="$(date -u +%Y)"
-          MONTH="$(date -u +%m)"
-          ROOT="https://releases.mozilla.org/pub/fenix/nightly/${YEAR}/${MONTH}/"
-
-          BUILD_DIR="$(
-            curl -fsSL "$ROOT" \
-            | grep -oE "/pub/fenix/nightly/${YEAR}/${MONTH}/[^\"']+/" \
-            | sed -E "s#^/pub/fenix/nightly/${YEAR}/${MONTH}/##" \
-            | grep -E "^${YEAR}-${MONTH}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-fenix-.*-android/$" \
-            | sort | tail -n 1
+          BUILD_VERSION="$(
+            curl -fsSL https://product-details.mozilla.org/1.0/mobile_versions.json \
+            | jq -r .nightly_version
           )"
 
-          if [[ -z "${BUILD_DIR:-}" ]]; then
-            echo "ERROR: Could not determine latest build dir from ${ROOT}" >&2
+          if [[ -z "${BUILD_VERSION:-}" || "${BUILD_VERSION}" == "null" ]]; then
+            echo "ERROR: Could not read nightly_version from product-details JSON" >&2
             exit 1
           fi
 
-          echo "BUILD_VERSION=${BUILD_DIR%/}" >> $GITHUB_ENV
+          echo "BUILD_VERSION=$BUILD_VERSION" >> $GITHUB_ENV
 
       - name: Check if latest version was already built
         if: ${{ steps.getLatest.outputs.tag_name == env.BUILD_VERSION }}
