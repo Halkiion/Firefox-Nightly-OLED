@@ -60,8 +60,13 @@ jobs:
 
       - name: Set release notes
         run: |
-          echo "RELEASE_NOTES=Automated build for Firefox Nightly: $BUILD_VERSION" >> $GITHUB_ENV
-
+          {
+            echo "RELEASE_NOTES<<EOF"
+            echo "Automated build for Firefox Nightly: $BUILD_VERSION"
+            echo "Changelog: https://www.firefox.com/en-US/firefox/android/$BUILD_VERSION/releasenotes/"
+            echo "EOF"
+          } >> "$GITHUB_ENV"
+          
       - name: Publish release
         uses: softprops/action-gh-release@v1
         with:
