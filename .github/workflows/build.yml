@@ -63,7 +63,7 @@ jobs:
           {
             echo "RELEASE_NOTES<<EOF"
             echo "Automated build for Firefox Nightly: $BUILD_VERSION"
-            echo "Changelog: https://www.firefox.com/firefox/$BUILD_VERSION/releasenotes/
+            echo "Changelog: https://www.firefox.com/firefox/$BUILD_VERSION/releasenotes/"
             echo "EOF"
           } >> "$GITHUB_ENV"
           
